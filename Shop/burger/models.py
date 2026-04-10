@@ -37,14 +37,14 @@ class Order(models.Model):
 
     def finish_order(self):
         self.time_out = datetime.now()
-        self.time_out = True
+        self.complete = True
         self.save()
 
     def order_duration(self):
         if self.complete:
-            return (self.time_in - self.time_out).total_seconds() // 60
+            return (self.time_in - self.time_out).total_seconds()
         else:
-            return (datetime.now() - self.time_in).total_seconds() // 60
+            return (datetime.now() - self.time_in).total_seconds()
 
 
 class ProductsOrder(models.Model):
